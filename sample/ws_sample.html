@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<header>
+  <meta charset="utf-8">
+</header>
+
+<body>
+  <form name="publish">
+    <input type="text" name="message" maxlength="50" />
+    <input type="submit" value="Send" />
+  </form>
+
+  <div id="messages"></div>
+</body>
+<script>
+  let url = "ws://localhost/websocket";
+  let socket = new WebSocket(url);
+
+  document.forms.publish.onsubmit = function () {
+    let message = this.message.value;
+    socket.send(message);
+    return false;
+  };
+
+  socket.onmessage = function (event) {
+    let message = event.data;
+    let messageElem = document.createElement('div');
+    messageElem.textContent = message;
+    document.getElementById('messages').prepend(messageElem);
+
+    showMessage(incomingMessage);
+  };
+
+  socket.onclose = event => console.log(`Closed ${event.code}`);
+</script>
+</html>

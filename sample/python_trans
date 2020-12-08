@@ -1,0 +1,13 @@
+#!/usr/bin/python3
+
+import os
+import sys
+import google_trans_new
+
+tgt = os.getenv('TGT', default='ja')
+
+data = sys.stdin.read()
+  
+translator = google_trans_new.google_translator()  
+translate_text = translator.translate(data,lang_tgt=tgt)  
+print(translate_text)

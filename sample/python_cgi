@@ -1,0 +1,17 @@
+#!/usr/bin/python3
+
+import os
+import sys
+
+print("Content-Type: text/plain; charset=utf-8")
+print()
+
+print("環境変数")
+env = os.environ
+for key,value in env.items():
+    print('{0}: {1}'.format(key,value))
+print()
+
+print("標準入力")
+data = sys.stdin.read()
+print(data)

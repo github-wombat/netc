@@ -1,0 +1,15 @@
+#!/usr/bin/python3
+
+import cgi
+
+import cgitb
+cgitb.enable()
+
+print("Content-Type: text/plain; charset=utf-8")
+print()
+
+form = cgi.FieldStorage()
+
+for key in form:
+    value = form[key].value
+    print('{0}: {1}'.format(key,value))

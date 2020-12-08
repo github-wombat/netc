@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "/etc/lighttpd"
+		},
+		{
+			"path": "/usr/lib/cgi-bin"
+		},
+		{
+			"path": "/var/www/html"
+		}
+	]
+}
