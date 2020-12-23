@@ -3,7 +3,9 @@
 ## ML(Markup Language)
 
 * ML とは
+
 * ML の歴史
+
     - roff
     - TeX
     - SGML
@@ -11,7 +13,9 @@
     - XML
 
 ## HTML(HyperText Markup Language)
+
 * 基本構造
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -25,15 +29,21 @@
     </body>
 </html>
 ```
+
 * DTD(Document Type Definition 文書型定義)
+
 ```
 <!DOCTYPE html>
 ```
+
 * htmlタグ
+
 ```
 <html> ... </html>
 ```
+
 * headタグ
+
     - 情報定義
     - CSSやJavascriptの読込
     - タイトル
@@ -41,14 +51,18 @@
 * bodyタグ
 
 ## HTTP(HyperText Transfer Protocol)
+
 * ステートレスなプロトコル
+
 * リクエスト
+
 ```
 GET /index.html HTTP/1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:84.0) Gecko/20100101 Firefox/84.0
 ```
 
 * レスポンス
+
 ```
 HTTP/1.0 200 OK
 Content-Type: text/html
@@ -65,11 +79,13 @@ Server: lighttpd/1.4.57
 * GET と POST
 
     - GET request
+
     ```
     GET /cgi-bin/python_cgi?name=net-c&furigana=%E3%81%AD%E3%81%A3%E3%81%A8%E3%81%97%E3%83%BC HTTP/1.1
     ```
 
     - POST request
+
     ```
     POST /cgi-bin/python_cgi HTTP/1.1
 
