@@ -1,0 +1,17 @@
+#!/usr/bin/python3
+import socket
+
+BUFFER_SIZE = 1024
+RECV_ADDR = ('',5900)
+
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+sock.bind(RECV_ADDR)
+
+while True:
+    data, addr = sock.recvfrom(BUFFER_SIZE)
+    line = data.decode('utf-8')
+    print('recv line: {0}\nfrom: {1}'.format(line,addr))
+    if line == 'end':
+        break;
+
+sock.close()
