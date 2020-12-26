@@ -1,0 +1,27 @@
+@startuml
+
+title UDP
+
+participant "送信" as S
+participant "受信" as R
+
+S ->x R
+note right: 受信側が待受けていないと破棄
+
+?-> R
+note right: 受信開始
+activate R
+S -> R
+S -> R
+
+...
+
+S -> R
+
+?-> R
+note right: 受信終了
+deactivate R
+
+S ->x R
+
+@enduml

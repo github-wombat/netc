@@ -1,0 +1,59 @@
+@startuml
+
+title TCP
+
+participant "Client1" as C1
+participant "Client2" as C2
+box Server
+participant "Listen" as L
+
+C1 ->x L: connect
+note right: 受信側が待受けていないと失敗
+
+...
+
+?-> L
+note right: listen
+activate L
+
+C1 -> L: connect
+activate C1
+create participant "Socket1" as S1
+L -> S1: accept
+activate S1
+
+C1 -> S1: send
+S1 -> C1: recv
+
+|||
+
+C2 -> L: connect
+activate C2
+create participant "Socket2" as S2
+L -> S2: accept
+activate S2
+
+C2 -> S2: send
+S2 -> C2: recv
+
+|||
+
+C2 -> S2: disconnect
+deactivate C2
+deactivate S2
+
+||| 
+
+S1 -> C1: disconnect
+deactivate C1
+deactivate S1
+
+|||
+
+?-> L
+note right: close
+deactivate L
+
+end box
+
+@enduml

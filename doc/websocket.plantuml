@@ -1,7 +1,11 @@
 @startuml
 
-participant ブラウザー as B
+box "ブラウザー"
+participant "画面(HTTP)" as B
 participant JavaScript as J
+end box
+
+box "サーバー"
 participant "HTTP Server" as S
 
 == 通常の接続 ==
@@ -11,6 +15,8 @@ activate S
 S -> B: http レスポンス
 deactivate S
 
+|||
+
 == Ajax (XMLHttpRequest)==
 
 B -> S: http リクエスト
@@ -18,6 +24,8 @@ activate S
 S -> B: http レスポンス
 deactivate S
 activate B
+
+|||
 
 group 更新
 B -> J: 状態変化
@@ -30,7 +38,11 @@ J -> B: 画面変化
 deactivate J
 end
 
+|||
+
 destroy B
+
+|||
 
 == Web Socket ==
 
@@ -47,24 +59,34 @@ J -> S: http リクエスト\n(Web Socket 接続要求)
 activate S
 create participant "Web Socket" as W
 S -> W: upgrade
+activate W
 S -> J: http レスポンス\n(Web Socket 接続応答)
 deactivate S
-activate W
+
+|||
 
 group 送信
 B -> J: 状態変化
 J -> W: データ送信
 end
 
+|||
+
 group 受信
 W -> J: データ受信
 J -> B: 画面変化
 end
+
+|||
 
 B -> J: 終了
 destroy B
 J -> W: web socket 切断
 deactivate J
 deactivate W
+
+|||
+
+end box
 
 @enduml
