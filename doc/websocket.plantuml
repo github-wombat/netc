@@ -1,7 +1,7 @@
 @startuml
 
 box "ブラウザー"
-participant "画面(HTTP)" as B
+participant "画面(HTML)" as H
 participant JavaScript as J
 end box
 
@@ -10,49 +10,49 @@ participant "HTTP Server" as S
 
 == 通常の接続 ==
 
-B -> S: http リクエスト
+H -> S: http リクエスト
 activate S
-S -> B: http レスポンス
+S -> H: http レスポンス
 deactivate S
 
 |||
 
 == Ajax (XMLHttpRequest)==
 
-B -> S: http リクエスト
+H -> S: http リクエスト
 activate S
-S -> B: http レスポンス
+S -> H: http レスポンス
 deactivate S
-activate B
+activate H
 
 |||
 
 group 更新
-B -> J: 状態変化
+H -> J: 状態変化
 activate J
 J -> S: http リクエスト
 activate S
 S -> J: http レスポンス
 deactivate S
-J -> B: 画面変化
+J -> H: 画面変化
 deactivate J
 end
 
 |||
 
-destroy B
+destroy H
 
 |||
 
 == Web Socket ==
 
-B -> S: http リクエスト
+H -> S: http リクエスト
 activate S
-S -> B: http レスポンス
+S -> H: http レスポンス
 deactivate S
-activate B
+activate H
 
-B -> J: 実行
+H -> J: 実行
 activate J
 
 J -> S: http リクエスト\n(Web Socket 接続要求)
@@ -66,7 +66,7 @@ deactivate S
 |||
 
 group 送信
-B -> J: 状態変化
+H -> J: 状態変化
 J -> W: データ送信
 end
 
@@ -74,13 +74,13 @@ end
 
 group 受信
 W -> J: データ受信
-J -> B: 画面変化
+J -> H: 画面変化
 end
 
 |||
 
-B -> J: 終了
-destroy B
+H -> J: 終了
+destroy H
 J -> W: web socket 切断
 deactivate J
 deactivate W

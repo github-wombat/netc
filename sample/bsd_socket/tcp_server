@@ -1,0 +1,29 @@
+#!/usr/bin/python3
+import socket
+
+BUFFER_SIZE = 1024
+RECV_ADDR = ('',5900)
+loop_end = False
+
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+sock.bind(RECV_ADDR)
+sock.listen(1)
+
+while True:
+    conn, addr = sock.accept()
+    print('+++ connect {}'.format(addr))
+    while True:
+        data = conn.recv(BUFFER_SIZE)
+        if data == b'':
+            break
+        line = data.decode('utf-8')
+        print('< {0}({1})'.format(line,data))
+        if line == 'end':
+            loop_end = True
+            break
+    print('--- disconnect ---')
+    if loop_end:
+        break
+
+sock.close()
+print('=== finish ===')

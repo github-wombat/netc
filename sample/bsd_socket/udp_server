@@ -10,7 +10,7 @@ sock.bind(RECV_ADDR)
 while True:
     data, addr = sock.recvfrom(BUFFER_SIZE)
     line = data.decode('utf-8')
-    print('recv line: {0}\nfrom: {1}'.format(line,addr))
+    print('< {0}({1}) :{2}'.format(line,data,addr))
     if line == 'end':
         break;
 
