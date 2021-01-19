@@ -1,0 +1,709 @@
+<!DOCTYPE html><html><head>
+      <title>netc6</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:////home/satyr_debian/.vscode-insiders/extensions/shd101wyy.markdown-preview-enhanced-0.5.16/node_modules/@shd101wyy/mume/dependencies/katex/katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="net-c-%E5%8B%89%E5%BC%B7%E4%BC%9A-6%E5%9B%9E%E7%9B%AE">NET-C &#x52C9;&#x5F37;&#x4F1A; 6&#x56DE;&#x76EE;</h1>
+
+<h2 class="mume-header" id="%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%E3%83%BC%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%AE%E6%AD%B4%E5%8F%B2">&#x30B3;&#x30F3;&#x30D4;&#x30E5;&#x30FC;&#x30BF;&#x30FC;&#x30FB;&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x306E;&#x6B74;&#x53F2;</h2>
+
+<ul>
+<li>
+<p>ARPA(Advance Research Project Agency) 1958</p>
+<ul>
+<li>&#x7C73;&#x56FD;&#x653F;&#x5E9C;&#x306B;&#x3088;&#x308A;&#x8A2D;&#x7ACB;(&#x30B9;&#x30D7;&#x30FC;&#x30C8;&#x30CB;&#x30AF;&#x30FB;&#x30B7;&#x30E7;&#x30C3;&#x30AF;)</li>
+<li>&#x5B87;&#x5B99;&#x958B;&#x767A;&#x304C;NASA&#x306B;&#x79FB;&#x7BA1;&#x3057;&#x305F;&#x306E;&#x3067;&#x3001;&#x305D;&#x306E;&#x4ED6;&#x306E;&#x7814;&#x7A76;&#x306B;&#x6CE8;&#x529B;</li>
+<li>ARPANET 1969
+<ul>
+<li>&#x6838;&#x653B;&#x6483;&#x3055;&#x308C;&#x305F;&#x5834;&#x5408;&#x306B;&#x5099;&#x3048;&#x308B;&#x5206;&#x6563;&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;</li>
+<li>NCP (Network Control Program)</li>
+<li>&#x30EA;&#x30E2;&#x30FC;&#x30C8;&#x30ED;&#x30B0;&#x30A4;&#x30F3;&#x3084; FTP(File Transfer Protocol) &#x3084; &#x96FB;&#x5B50;&#x30E1;&#x30FC;&#x30EB;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>BBS(&#x96FB;&#x5B50;&#x63B2;&#x793A;&#x677F;) 1974</p>
+<ul>
+<li>&#x6C11;&#x9593;&#x4E3B;&#x5C0E;</li>
+<li>&#x30D1;&#x30BD;&#x30B3;&#x30F3;&#x901A;&#x4FE1;&#x3078; 1980&#x5E74;&#x4EE3;&#x4E2D;&#x671F;</li>
+</ul>
+</li>
+<li>
+<p>UUCP (Unix to Unix CoPy) 1976</p>
+<ul>
+<li>AT&amp;T &#x30D9;&#x30EB;&#x7814; UNIX Version7 &#x3088;&#x308A;&#x5C0E;&#x5165;</li>
+<li>&#x96FB;&#x5B50;&#x30E1;&#x30FC;&#x30EB;&#x3068;&#x30CD;&#x30C3;&#x30C8;&#x30CB;&#x30E5;&#x30FC;&#x30B9;</li>
+<li>&#x7C73;&#x56FD;&#x5927;&#x5B66;&#x9593;&#x901A;&#x4FE1;(usenet) 1977</li>
+<li>&#x65E5;&#x672C;&#x5927;&#x5B66;&#x9593;&#x901A;&#x4FE1;(Junet) 1984</li>
+</ul>
+</li>
+</ul>
+<h2 class="mume-header" id="%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB">&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x30FB;&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;</h2>
+
+<ul>
+<li>
+<p>1980&#x5E74;&#x4EE3;</p>
+<ul>
+<li>IBM SNA (&#x30E1;&#x30A4;&#x30F3;&#x30D5;&#x30EC;&#x30FC;&#x30E0;)</li>
+<li>DECNET (&#x30DF;&#x30CB;&#x30B3;&#x30F3;)</li>
+<li>Xerox XNS</li>
+<li>Novell Netware</li>
+<li>NetBIOS</li>
+<li>AppleTalk</li>
+<li>TCP/IP</li>
+</ul>
+<p>ISO&#x306B;&#x3088;&#x308B;&#x6A19;&#x6E96;&#x5316;(OSI)&#x306E;&#x52D5;&#x304D;</p>
+</li>
+<li>
+<p>1990&#x5E74;&#x9803;</p>
+<ul>
+<li>TCP/IP &#x306E;&#x52DD;&#x5229;</li>
+<li>OSI &#x306E;&#x5931;&#x6557;</li>
+</ul>
+<p>OSI&#x306F;&#x540D;&#x524D;&#x3068;&#x6982;&#x5FF5;&#x306E;&#x307F;&#x6B8B;&#x308B;</p>
+</li>
+</ul>
+<h2 class="mume-header" id="%E5%8F%82%E7%85%A7%E3%83%A2%E3%83%87%E3%83%AB">&#x53C2;&#x7167;&#x30E2;&#x30C7;&#x30EB;</h2>
+
+<table>
+<thead>
+<tr>
+<th>&#x968E;&#x5C64;</th>
+<th colspan="2">OSI&#x53C2;&#x7167;&#x30E2;&#x30C7;&#x30EB;</th>
+
+<th>TCP/IP&#x53C2;&#x7167;&#x30E2;&#x30C7;&#x30EB;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7</td>
+<td>&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x5C64;</td>
+<td>&#x5177;&#x4F53;&#x7684;&#x306A;&#x901A;&#x4FE1;&#x30B5;&#x30FC;&#x30D3;&#x30B9;</td>
+<td rowspan="3">&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x5C64;</td>
+</tr>
+<tr>
+<td>6</td>
+<td>&#x30D7;&#x30EC;&#x30BC;&#x30F3;&#x30C6;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x5C64;</td>
+<td>&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x8868;&#x73FE;&#x65B9;&#x6CD5;</td>
+
+</tr>
+<tr>
+<td>5</td>
+<td>&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x5C64;</td>
+<td>&#x63A5;&#x7D9A;&#x306E;&#x624B;&#x9806;</td>
+
+</tr>
+<tr>
+<td>4</td>
+<td>&#x30C8;&#x30E9;&#x30F3;&#x30B9;&#x30DD;&#x30FC;&#x30C8;&#x5C64;</td>
+<td>&#x30C7;&#x30FC;&#x30BF;&#x901A;&#x4FE1;&#x306E;&#x5236;&#x5FA1;</td>
+<td>&#x30C8;&#x30E9;&#x30F3;&#x30B9;&#x30DD;&#x30FC;&#x30C8;&#x5C64;</td>
+</tr>
+<tr>
+<td>3</td>
+<td>&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x5C64;</td>
+<td>&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x306E;&#x901A;&#x4FE1;&#x7D4C;&#x8DEF;</td>
+<td>&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30CD;&#x30C3;&#x30C8;&#x5C64;</td>
+</tr>
+<tr>
+<td>2</td>
+<td>&#x30C7;&#x30FC;&#x30BF;&#x30EA;&#x30F3;&#x30AF;&#x5C64;</td>
+<td>&#x76F4;&#x63A5;&#x63A5;&#x7D9A;&#x3067;&#x306E;&#x901A;&#x4FE1;</td>
+<td rowspan="2">&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30A4;&#x30B9;&#x5C64;</td>
+</tr>
+<tr>
+<td>1</td>
+<td>&#x7269;&#x7406;&#x5C64;</td>
+<td>&#x7269;&#x7406;&#x7684;&#x306A;&#x63A5;&#x7D9A;</td>
+
+</tr>
+</tbody>
+</table>
+<h2 class="mume-header" id="ipc%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E9%96%93%E9%80%9A%E4%BF%A1interprocess-communication">IPC(&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x9593;&#x901A;&#x4FE1;&#x30FB;InterProcess communication)</h2>
+
+<ul>
+<li>&#x30D5;&#x30A1;&#x30A4;&#x30EB;</li>
+<li>&#x30D1;&#x30A4;&#x30D7;</li>
+<li>&#x540D;&#x524D;&#x4ED8;&#x304D;&#x30D1;&#x30A4;&#x30D7;</li>
+<li>&#x30B7;&#x30B0;&#x30CA;&#x30EB;</li>
+<li>&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x30AD;&#x30E5;&#x30FC;</li>
+<li>&#x5171;&#x6709;&#x30E1;&#x30E2;&#x30EA;&#x30FC;</li>
+<li>&#x30BD;&#x30B1;&#x30C3;&#x30C8;(BSD)</li>
+<li>etc</li>
+</ul>
+<h2 class="mume-header" id="bsd%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88">BSD&#x30BD;&#x30B1;&#x30C3;&#x30C8;</h2>
+
+<p>1983&#x5E74; 4.2BSD</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>SOCK_STREAM</th>
+<th>SOCK_DGRAM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AF_INET / AF_INET6</td>
+<td>TCP</td>
+<td>UDP</td>
+</tr>
+<tr>
+<td>AF_UNIX</td>
+<td>UNIX&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x30BD;&#x30B1;&#x30C3;&#x30C8;</td>
+<td>UNIX&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x30BD;&#x30B1;&#x30C3;&#x30C8;</td>
+</tr>
+</tbody>
+</table>
+<h2 class="mume-header" id="bsdberkeley-software-distribution">BSD(Berkeley Software Distribution)</h2>
+
+<ul>
+<li>AT&amp;T&#x30D9;&#x30EB;&#x7814;&#x7A76;&#x6240;&#x3067;&#x4F5C;&#x3089;&#x308C;&#x305F;&#x30AA;&#x30EA;&#x30B8;&#x30CA;&#x30EB; UNIX &#x306E;&#x521D;&#x671F;&#x30B3;&#x30FC;&#x30C9;&#x304C;&#x5927;&#x5B66;&#x7814;&#x7A76;&#x8005;&#x306B;&#x63D0;&#x4F9B;</li>
+<li>&#x30AB;&#x30EB;&#x30D5;&#x30A9;&#x30EB;&#x30CB;&#x30A2;&#x5927;&#x5B66;&#x30D0;&#x30FC;&#x30AF;&#x30EC;&#x30FC;&#x6821;(UCB)&#x306B;&#x3088;&#x308B;&#x6D3E;&#x751F;UNIX(1978&#x5E74;)</li>
+<li>BSD Unix &#x306E;&#x3055;&#x3089;&#x306B;&#x4E9C;&#x6D41;UNIX &#x304C; NextStep &#x2192; Mac OS X</li>
+<li>PC &#x3078;&#x306E;&#x79FB;&#x690D;&#x7248; Unix &#x3068;&#x3057;&#x3066; 386BSD &#x304C;&#x4F5C;&#x3089;&#x308C;&#x305F;&#x304C;&#x3001;BSD &#x3068; AT&amp;T &#x3068;&#x306E;&#x9593;&#x3067; Unix &#x306E;&#x6A29;&#x5229;&#x306B;&#x3064;&#x3044;&#x3066;&#x306E;&#x8A34;&#x8A1F;&#x304C;&#x884C;&#x306A;&#x308F;&#x308C; BSD Unix &#x306E;&#x958B;&#x767A;&#x304C;&#x7D42;&#x4E86;</li>
+<li>386BSD &#x3082;&#x6A29;&#x5229;&#x95A2;&#x4FC2;&#x3067;&#x554F;&#x984C;&#x3068;&#x306A;&#x308B;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x5DEE;&#x3057;&#x66FF;&#x3048;&#x304C;&#x5FC5;&#x8981;&#x3068;&#x306A;&#x308A;&#x3001;&#x52D5;&#x304F;&#x72B6;&#x614B;&#x306B;&#x623B;&#x3059;&#x306E;&#x306B;&#x624B;&#x9593;&#x53D6;&#x308B;(FreeBSD)</li>
+<li>&#x305D;&#x306E;&#x9593;&#x306B;&#x3001;&#x30BC;&#x30ED;&#x304B;&#x3089;&#x4F5C;&#x3089;&#x308C;&#x305F; Unix &#x30AF;&#x30ED;&#x30FC;&#x30F3;&#x3067;&#x3042;&#x308B; Linux &#x304C;&#x53F0;&#x982D;</li>
+</ul>
+<h2 class="mume-header" id="%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC1%E7%89%A9%E7%90%86%E5%B1%A4">&#x30EC;&#x30A4;&#x30E4;&#x30FC;1(&#x7269;&#x7406;&#x5C64;)</h2>
+
+<ul>
+<li>RS-232C</li>
+<li>10BASE-T / 100BASE-T / 1000BASE-T</li>
+<li>DSL(ADSL)</li>
+<li>&#x7121;&#x7DDA;</li>
+</ul>
+<h2 class="mume-header" id="%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC2%E3%83%87%E3%83%BC%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%AF%E5%B1%A4">&#x30EC;&#x30A4;&#x30E4;&#x30FC;2(&#x30C7;&#x30FC;&#x30BF;&#x30EA;&#x30F3;&#x30AF;&#x5C64;)</h2>
+
+<ul>
+<li>
+<p>Ethenet(IEEE 802.3)</p>
+</li>
+<li>
+<p>&#x7121;&#x7DDA;LAN(IEEE 802.22 a/b/g/n)</p>
+</li>
+<li>
+<p>PPP(Point-to-Point Protocol)</p>
+<ul>
+<li>PPPoE (PPP over Ethernet)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x968E;&#x5C64;</th>
+<th>OSI&#x53C2;&#x7167;&#x30E2;&#x30C7;&#x30EB;</th>
+<th>native&#x63A5;&#x7D9A;</th>
+<th>&#x30C0;&#x30A4;&#x30A2;&#x30EB;&#x30A2;&#x30C3;&#x30D7;&#x63A5;&#x7D9A;</th>
+<th>&#x30D5;&#x30EC;&#x30C3;&#x30C4;&#x5149;&#x7B49;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>&#x30C7;&#x30FC;&#x30BF;&#x30EA;&#x30F3;&#x30AF;&#x5C64;</td>
+<td>Ethernet</td>
+<td>PPP</td>
+<td>PPPoE<br>Ethernet</td>
+</tr>
+<tr>
+<td>1</td>
+<td>&#x7269;&#x7406;&#x5C64;</td>
+<td>100BASE-T&#x7B49;</td>
+<td>RS-232C&#x7B49;</td>
+<td>&#x5149;&#x30B1;&#x30FC;&#x30D6;&#x30EB;&#x7B49;</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<h3 class="mume-header" id="ethenetieee-8023">Ethenet(IEEE 802.3)</h3>
+
+<ul>
+<li>&#x30D5;&#x30EC;&#x30FC;&#x30E0;&#x306E;&#x69CB;&#x6210;
+<ul>
+<li>&#x30D7;&#x30EA;&#x30A2;&#x30F3;&#x30D6;&#x30EB; : 8&#x30AA;&#x30AF;&#x30C6;&#x30C3;&#x30C8;</li>
+<li>&#x5B9B;&#x5148;MAC&#x30A2;&#x30C9;&#x30EC;&#x30B9; : 6&#x30AA;&#x30AF;&#x30C6;&#x30C3;&#x30C8;</li>
+<li>&#x9001;&#x4FE1;&#x5143;MAC&#x30A2;&#x30C9;&#x30EC;&#x30B9; : 6&#x30AA;&#x30AF;&#x30C6;&#x30C3;&#x30C8;</li>
+<li>&#x9577;&#x3055; : 2&#x30AA;&#x30AF;&#x30C6;&#x30C3;&#x30C8;</li>
+<li>&#x30C7;&#x30FC;&#x30BF;&#x672C;&#x4F53; : 46&#x301C;1500&#x30AA;&#x30AF;&#x30C6;&#x30C3;&#x30C8;</li>
+<li>FCS(Frame Check Sequence) &#x30A8;&#x30E9;&#x30FC;&#x691C;&#x51FA; : 4&#x30AA;&#x30AF;&#x30C6;&#x30C3;&#x30C8;</li>
+</ul>
+</li>
+</ul>
+<h3 class="mume-header" id="%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC2%E3%82%B9%E3%82%A4%E3%83%83%E3%83%81">&#x30EC;&#x30A4;&#x30E4;&#x30FC;2&#x30B9;&#x30A4;&#x30C3;&#x30C1;</h3>
+
+<ul>
+<li>&#x30EA;&#x30D4;&#x30FC;&#x30BF;&#x30FC;&#x30CF;&#x30D6; / &#x30C0;&#x30E0;&#x30CF;&#x30D6; / &#x30D0;&#x30AB;&#x30CF;&#x30D6;</li>
+<li>&#x30B9;&#x30A4;&#x30C3;&#x30C1;&#x30F3;&#x30B0;&#x30CF;&#x30D6;</li>
+</ul>
+<h2 class="mume-header" id="%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC3%E3%83%87%E3%83%BC%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%AF%E5%B1%A4">&#x30EC;&#x30A4;&#x30E4;&#x30FC;3(&#x30C7;&#x30FC;&#x30BF;&#x30EA;&#x30F3;&#x30AF;&#x5C64;)</h2>
+
+<ul>
+<li>IP(v4,v6)</li>
+<li>ARP(Address Resolution Protocol)</li>
+</ul>
+<h3 class="mume-header" id="ipv4">IPv4</h3>
+
+<table class="wikitable" style="text-align:center" width="100%">
+<caption><b>&#x30D1;&#x30B1;&#x30C3;&#x30C8;&#x5F62;&#x5F0F;&#x56F3;</b>
+</caption>
+<tbody><tr>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+<th>12</th>
+<th>13</th>
+<th>14</th>
+<th>15</th>
+<th>16</th>
+<th>17</th>
+<th>18</th>
+<th>19</th>
+<th>20</th>
+<th>21</th>
+<th>22</th>
+<th>23</th>
+<th>24</th>
+<th>25</th>
+<th>26</th>
+<th>27</th>
+<th>28</th>
+<th>29</th>
+<th>30</th>
+<th>31</th>
+</tr>
+<tr>
+<td colspan="4">&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;
+</td>
+<td colspan="4">&#x30D8;&#x30C3;&#x30C0;&#x9577;
+</td>
+<td colspan="8">&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x7A2E;&#x5225;
+</td>
+<td colspan="16">&#x5168;&#x9577;
+</td></tr>
+<tr>
+<td colspan="16">&#x8B58;&#x5225;&#x5B50;
+</td>
+<td colspan="3">&#x30D5;&#x30E9;&#x30B0;
+</td>
+<td colspan="13">&#x65AD;&#x7247;&#x4F4D;&#x7F6E;
+</td></tr>
+<tr>
+<td colspan="8">&#x751F;&#x5B58;&#x6642;&#x9593;
+</td>
+<td colspan="8">&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;
+</td>
+<td colspan="16">&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x30B5;&#x30E0;
+</td></tr>
+<tr>
+<td colspan="32">&#x9001;&#x4FE1;&#x5143;&#x30A2;&#x30C9;&#x30EC;&#x30B9;
+</td></tr>
+<tr>
+<td colspan="32">&#x5B9B;&#x5148;&#x30A2;&#x30C9;&#x30EC;&#x30B9;
+</td></tr>
+<tr>
+<td colspan="32">&#x62E1;&#x5F35;&#x60C5;&#x5831;
+</td></tr>
+<tr>
+<td colspan="32">&#x30C7;&#x30FC;&#x30BF;<br><br>
+</td></tr></tbody></table>
+<h3 class="mume-header" id="ipv6">IPv6</h3>
+
+<p>IPv4 &#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x306E;&#x67AF;&#x6E07;&#x554F;&#x984C;&#x3092;&#x89E3;&#x6D88;&#x3059;&#x308B;&#x70BA;&#x306B;&#x5C0E;&#x5165;&#x3055;&#x308C;&#x305F;</p>
+<h3 class="mume-header" id="arpaddress-resolution-protocol">ARP(Address Resolution Protocol)</h3>
+
+<p>MAC&#x30A2;&#x30C9;&#x30EC;&#x30B9;(&#x30EC;&#x30A4;&#x30E4;&#x30FC;2)&#x3068;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;(&#x30EC;&#x30A4;&#x30E4;&#x30FC;3)&#x306E;&#x5BFE;&#x5FDC;&#x8868;&#x306E;&#x4EA4;&#x63DB;</p>
+<h3 class="mume-header" id="%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC3%E3%82%B9%E3%82%A4%E3%83%83%E3%83%81">&#x30EC;&#x30A4;&#x30E4;&#x30FC;3&#x30B9;&#x30A4;&#x30C3;&#x30C1;</h3>
+
+<ul>
+<li>&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x6A5F;&#x80FD;&#x3068;&#x30EC;&#x30A4;&#x30E4;&#x30FC;2&#x30B9;&#x30A4;&#x30C3;&#x30C1;&#x3092;&#x7D71;&#x5408;&#x3057;&#x305F;&#x3082;&#x306E;</li>
+<li>&#x3069;&#x306E;&#x6A5F;&#x80FD;&#x306B;&#x91CD;&#x70B9;&#x3092;&#x7F6E;&#x304F;&#x304B;&#x3067;&#x3001;&#x30EB;&#x30FC;&#x30BF;&#x30FC;&#x3068;&#x547C;&#x3070;&#x308C;&#x305F;&#x308A;L3&#x30B9;&#x30A4;&#x30C3;&#x30C1;&#x3068;&#x547C;&#x3070;&#x308C;&#x305F;&#x308A;</li>
+</ul>
+<h2 class="mume-header" id="%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC4%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%88%E5%B1%A4">&#x30EC;&#x30A4;&#x30E4;&#x30FC;4(&#x30C8;&#x30E9;&#x30F3;&#x30B9;&#x30DD;&#x30FC;&#x30C8;&#x5C64;)</h2>
+
+<h3 class="mume-header" id="udp">UDP</h3>
+
+<p><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" contentscripttype="application/ecmascript" contentstyletype="text/css" height="305px" preserveAspectRatio="none" style="width:301px;height:305px;" version="1.1" viewBox="0 0 301 305" width="301px" zoomAndPan="magnify"><defs><filter height="300%" id="f2xu7zbtmjtxe" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><rect fill="#FFFFFF" filter="url(#f2xu7zbtmjtxe)" height="48.6172" style="stroke:#FFFFFF;stroke-width:1.0;" width="10" x="79" y="108.2578"/><line style="stroke:#A80036;stroke-width:1.0;" x1="79" x2="79" y1="108.2578" y2="156.875"/><line style="stroke:#A80036;stroke-width:1.0;" x1="89" x2="89" y1="108.2578" y2="156.875"/><line style="stroke:#A80036;stroke-width:1.0;" x1="79" x2="89" y1="108.2578" y2="108.2578"/><rect fill="#FFFFFF" filter="url(#f2xu7zbtmjtxe)" height="32.6172" style="stroke:#FFFFFF;stroke-width:1.0;" width="10" x="79" y="184.875"/><line style="stroke:#A80036;stroke-width:1.0;" x1="79" x2="79" y1="184.875" y2="217.4922"/><line style="stroke:#A80036;stroke-width:1.0;" x1="89" x2="89" y1="184.875" y2="217.4922"/><line style="stroke:#A80036;stroke-width:1.0;" x1="79" x2="89" y1="217.4922" y2="217.4922"/><line style="stroke:#A80036;stroke-width:1.0;" x1="28" x2="28" y1="40.4063" y2="156.875"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:1.0,4.0;" x1="28" x2="28" y1="156.875" y2="184.875"/><line style="stroke:#A80036;stroke-width:1.0;" x1="28" x2="28" y1="184.875" y2="262.1094"/><line style="stroke:#A80036;stroke-width:1.0;" x1="84" x2="84" y1="40.4063" y2="156.875"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:1.0,4.0;" x1="84" x2="84" y1="156.875" y2="184.875"/><line style="stroke:#A80036;stroke-width:1.0;" x1="84" x2="84" y1="184.875" y2="262.1094"/><rect fill="#FEFECE" filter="url(#f2xu7zbtmjtxe)" height="30.4063" style="stroke:#A80036;stroke-width:1.5;" width="42" x="5" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="28" x="12" y="24.4414">&#x9001;&#x4FE1;</text><rect fill="#FEFECE" filter="url(#f2xu7zbtmjtxe)" height="30.4063" style="stroke:#A80036;stroke-width:1.5;" width="42" x="5" y="261.1094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="28" x="12" y="280.5508">&#x9001;&#x4FE1;</text><rect fill="#FEFECE" filter="url(#f2xu7zbtmjtxe)" height="30.4063" style="stroke:#A80036;stroke-width:1.5;" width="42" x="61" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="28" x="68" y="24.4414">&#x53D7;&#x4FE1;</text><rect fill="#FEFECE" filter="url(#f2xu7zbtmjtxe)" height="30.4063" style="stroke:#A80036;stroke-width:1.5;" width="42" x="61" y="261.1094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="28" x="68" y="280.5508">&#x53D7;&#x4FE1;</text><rect fill="#FFFFFF" filter="url(#f2xu7zbtmjtxe)" height="48.6172" style="stroke:#FFFFFF;stroke-width:1.0;" width="10" x="79" y="108.2578"/><line style="stroke:#A80036;stroke-width:1.0;" x1="79" x2="79" y1="108.2578" y2="156.875"/><line style="stroke:#A80036;stroke-width:1.0;" x1="89" x2="89" y1="108.2578" y2="156.875"/><line style="stroke:#A80036;stroke-width:1.0;" x1="79" x2="89" y1="108.2578" y2="108.2578"/><rect fill="#FFFFFF" filter="url(#f2xu7zbtmjtxe)" height="32.6172" style="stroke:#FFFFFF;stroke-width:1.0;" width="10" x="79" y="184.875"/><line style="stroke:#A80036;stroke-width:1.0;" x1="79" x2="79" y1="184.875" y2="217.4922"/><line style="stroke:#A80036;stroke-width:1.0;" x1="89" x2="89" y1="184.875" y2="217.4922"/><line style="stroke:#A80036;stroke-width:1.0;" x1="79" x2="89" y1="217.4922" y2="217.4922"/><line style="stroke:#A80036;stroke-width:2.0;" x1="66" x2="76" y1="64.0234" y2="74.0234"/><line style="stroke:#A80036;stroke-width:2.0;" x1="66" x2="76" y1="74.0234" y2="64.0234"/><line style="stroke:#A80036;stroke-width:1.0;" x1="28" x2="71" y1="69.0234" y2="69.0234"/><path d="M89,55.4063 L89,80.4063 L292,80.4063 L292,65.4063 L282,55.4063 L89,55.4063 " fill="#FBFB77" filter="url(#f2xu7zbtmjtxe)" style="stroke:#A80036;stroke-width:1.0;"/><path d="M282,55.4063 L282,65.4063 L292,65.4063 L282,55.4063 " fill="#FBFB77" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="182" x="95" y="71.959">&#x53D7;&#x4FE1;&#x5074;&#x304C;&#x5F85;&#x53D7;&#x3051;&#x3066;&#x3044;&#x306A;&#x3044;&#x3068;&#x7834;&#x68C4;</text><polygon fill="#A80036" points="67,104.2578,77,108.2578,67,112.2578,71,108.2578" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="65" x2="73" y1="108.2578" y2="108.2578"/><path d="M94,94.6406 L94,119.6406 L167,119.6406 L167,104.6406 L157,94.6406 L94,94.6406 " fill="#FBFB77" filter="url(#f2xu7zbtmjtxe)" style="stroke:#A80036;stroke-width:1.0;"/><path d="M157,94.6406 L157,104.6406 L167,104.6406 L157,94.6406 " fill="#FBFB77" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="52" x="100" y="111.1934">&#x53D7;&#x4FE1;&#x958B;&#x59CB;</text><polygon fill="#A80036" points="67,130.875,77,134.875,67,138.875,71,134.875" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="28" x2="73" y1="134.875" y2="134.875"/><polygon fill="#A80036" points="67,144.875,77,148.875,67,152.875,71,148.875" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="28" x2="73" y1="148.875" y2="148.875"/><polygon fill="#A80036" points="67,186.875,77,190.875,67,194.875,71,190.875" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="28" x2="73" y1="190.875" y2="190.875"/><polygon fill="#A80036" points="72,213.4922,82,217.4922,72,221.4922,76,217.4922" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="60" x2="78" y1="217.4922" y2="217.4922"/><path d="M94,203.875 L94,228.875 L167,228.875 L167,213.875 L157,203.875 L94,203.875 " fill="#FBFB77" filter="url(#f2xu7zbtmjtxe)" style="stroke:#A80036;stroke-width:1.0;"/><path d="M157,203.875 L157,213.875 L167,213.875 L157,203.875 " fill="#FBFB77" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="52" x="100" y="220.4277">&#x53D7;&#x4FE1;&#x7D42;&#x4E86;</text><line style="stroke:#A80036;stroke-width:2.0;" x1="66" x2="76" y1="239.1094" y2="249.1094"/><line style="stroke:#A80036;stroke-width:2.0;" x1="66" x2="76" y1="249.1094" y2="239.1094"/><line style="stroke:#A80036;stroke-width:1.0;" x1="28" x2="71" y1="244.1094" y2="244.1094"/><!--MD5=[53025ee1c0ac7289c64fede26896bb0e]
+@startuml
+
+participant "送信" as S
+participant "受信" as R
+
+S ->x R
+note right: 受信側が待受けていないと破棄
+
+?-> R
+note right: 受信開始
+activate R
+S -> R
+S -> R
+
+...
+
+S -> R
+
+?-> R
+note right: 受信終了
+deactivate R
+
+S ->x R
+
+@enduml
+
+PlantUML version 1.2020.26(Tue Dec 22 02:45:07 JST 2020)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: ja
+Country: JP
+--></g></svg></p><h3 class="mume-header" id="tcp">TCP</h3>
+
+<p><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" contentscripttype="application/ecmascript" contentstyletype="text/css" height="695px" preserveAspectRatio="none" style="width:418px;height:695px;" version="1.1" viewBox="0 0 418 695" width="418px" zoomAndPan="magnify"><defs><filter height="300%" id="f1tq5xx29fq6sj" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><rect fill="#DDDDDD" height="683.4375" style="stroke:#A80036;stroke-width:1.0;" width="253" x="159.5" y="6"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="48" x="262" y="17.5527">Server</text><rect fill="#FFFFFF" filter="url(#f1tq5xx29fq6sj)" height="370.4531" style="stroke:#A80036;stroke-width:1.0;" width="10" x="33.5" y="198.3438"/><rect fill="#FFFFFF" filter="url(#f1tq5xx29fq6sj)" height="158.1094" style="stroke:#A80036;stroke-width:1.0;" width="10" x="110.5" y="356.4531"/><rect fill="#FFFFFF" filter="url(#f1tq5xx29fq6sj)" height="463.9219" style="stroke:#A80036;stroke-width:1.0;" width="10" x="188.5" y="156.4922"/><rect fill="#FFFFFF" filter="url(#f1tq5xx29fq6sj)" height="331.2188" style="stroke:#A80036;stroke-width:1.0;" width="10" x="293" y="237.5781"/><rect fill="#FFFFFF" filter="url(#f1tq5xx29fq6sj)" height="118.875" style="stroke:#A80036;stroke-width:1.0;" width="10" x="370" y="395.6875"/><line style="stroke:#A80036;stroke-width:1.0;" x1="38" x2="38" y1="60.6406" y2="109.875"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:1.0,4.0;" x1="38" x2="38" y1="109.875" y2="137.875"/><line style="stroke:#A80036;stroke-width:1.0;" x1="38" x2="38" y1="137.875" y2="651.0313"/><line style="stroke:#A80036;stroke-width:1.0;" x1="115" x2="115" y1="60.6406" y2="109.875"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:1.0,4.0;" x1="115" x2="115" y1="109.875" y2="137.875"/><line style="stroke:#A80036;stroke-width:1.0;" x1="115" x2="115" y1="137.875" y2="651.0313"/><line style="stroke:#A80036;stroke-width:1.0;" x1="193.5" x2="193.5" y1="60.6406" y2="109.875"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:1.0,4.0;" x1="193.5" x2="193.5" y1="109.875" y2="137.875"/><line style="stroke:#A80036;stroke-width:1.0;" x1="193.5" x2="193.5" y1="137.875" y2="651.0313"/><line style="stroke:#A80036;stroke-width:1.0;" x1="297.5" x2="297.5" y1="239.0469" y2="651.0313"/><line style="stroke:#A80036;stroke-width:1.0;" x1="374.5" x2="374.5" y1="397.1563" y2="651.0313"/><rect fill="#FEFECE" filter="url(#f1tq5xx29fq6sj)" height="30.4063" style="stroke:#A80036;stroke-width:1.5;" width="63" x="5" y="25.2344"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="49" x="12" y="44.6758">Client1</text><rect fill="#FEFECE" filter="url(#f1tq5xx29fq6sj)" height="30.4063" style="stroke:#A80036;stroke-width:1.5;" width="63" x="5" y="650.0313"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="49" x="12" y="669.4727">Client1</text><rect fill="#FEFECE" filter="url(#f1tq5xx29fq6sj)" height="30.4063" style="stroke:#A80036;stroke-width:1.5;" width="63" x="82" y="25.2344"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="49" x="89" y="44.6758">Client2</text><rect fill="#FEFECE" filter="url(#f1tq5xx29fq6sj)" height="30.4063" style="stroke:#A80036;stroke-width:1.5;" width="63" x="82" y="650.0313"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="49" x="89" y="669.4727">Client2</text><rect fill="#FEFECE" filter="url(#f1tq5xx29fq6sj)" height="30.4063" style="stroke:#A80036;stroke-width:1.5;" width="56" x="163.5" y="25.2344"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="42" x="170.5" y="44.6758">Listen</text><rect fill="#FEFECE" filter="url(#f1tq5xx29fq6sj)" height="30.4063" style="stroke:#A80036;stroke-width:1.5;" width="56" x="163.5" y="650.0313"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="42" x="170.5" y="669.4727">Listen</text><rect fill="#FEFECE" filter="url(#f1tq5xx29fq6sj)" height="30.4063" style="stroke:#A80036;stroke-width:1.5;" width="63" x="264.5" y="650.0313"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="49" x="271.5" y="669.4727">Socket1</text><rect fill="#FEFECE" filter="url(#f1tq5xx29fq6sj)" height="30.4063" style="stroke:#A80036;stroke-width:1.5;" width="63" x="341.5" y="650.0313"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="49" x="348.5" y="669.4727">Socket2</text><rect fill="#FFFFFF" filter="url(#f1tq5xx29fq6sj)" height="370.4531" style="stroke:#A80036;stroke-width:1.0;" width="10" x="33.5" y="198.3438"/><rect fill="#FFFFFF" filter="url(#f1tq5xx29fq6sj)" height="158.1094" style="stroke:#A80036;stroke-width:1.0;" width="10" x="110.5" y="356.4531"/><rect fill="#FFFFFF" filter="url(#f1tq5xx29fq6sj)" height="463.9219" style="stroke:#A80036;stroke-width:1.0;" width="10" x="188.5" y="156.4922"/><rect fill="#FFFFFF" filter="url(#f1tq5xx29fq6sj)" height="331.2188" style="stroke:#A80036;stroke-width:1.0;" width="10" x="293" y="237.5781"/><rect fill="#FFFFFF" filter="url(#f1tq5xx29fq6sj)" height="118.875" style="stroke:#A80036;stroke-width:1.0;" width="10" x="370" y="395.6875"/><line style="stroke:#A80036;stroke-width:2.0;" x1="175.5" x2="185.5" y1="91.875" y2="101.875"/><line style="stroke:#A80036;stroke-width:2.0;" x1="175.5" x2="185.5" y1="101.875" y2="91.875"/><line style="stroke:#A80036;stroke-width:1.0;" x1="38.5" x2="180.5" y1="96.875" y2="96.875"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="49" x="45.5" y="91.1934">connect</text><path d="M198,75.6406 L198,100.6406 L401,100.6406 L401,85.6406 L391,75.6406 L198,75.6406 " fill="#FBFB77" filter="url(#f1tq5xx29fq6sj)" style="stroke:#A80036;stroke-width:1.0;"/><path d="M391,75.6406 L391,85.6406 L401,85.6406 L391,75.6406 " fill="#FBFB77" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="182" x="204" y="92.1934">&#x53D7;&#x4FE1;&#x5074;&#x304C;&#x5F85;&#x53D7;&#x3051;&#x3066;&#x3044;&#x306A;&#x3044;&#x3068;&#x5931;&#x6557;</text><polygon fill="#A80036" points="176.5,152.4922,186.5,156.4922,176.5,160.4922,180.5,156.4922" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="174.5" x2="182.5" y1="156.4922" y2="156.4922"/><path d="M203,142.875 L203,167.875 L266,167.875 L266,152.875 L256,142.875 L203,142.875 " fill="#FBFB77" filter="url(#f1tq5xx29fq6sj)" style="stroke:#A80036;stroke-width:1.0;"/><path d="M256,142.875 L256,152.875 L266,152.875 L256,142.875 " fill="#FBFB77" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="42" x="209" y="159.4277">listen</text><polygon fill="#A80036" points="176.5,194.3438,186.5,198.3438,176.5,202.3438,180.5,198.3438" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="43.5" x2="182.5" y1="198.3438" y2="198.3438"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="49" x="50.5" y="192.6621">connect</text><polygon fill="#A80036" points="252.5,223.5781,262.5,227.5781,252.5,231.5781,256.5,227.5781" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="198.5" x2="258.5" y1="227.5781" y2="227.5781"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="42" x="205.5" y="221.8965">accept</text><rect fill="#FEFECE" filter="url(#f1tq5xx29fq6sj)" height="30.4063" style="stroke:#A80036;stroke-width:1.5;" width="63" x="264.5" y="206.3438"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="49" x="271.5" y="225.7852">Socket1</text><polygon fill="#A80036" points="281,268.9844,291,272.9844,281,276.9844,285,272.9844" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="43.5" x2="287" y1="272.9844" y2="272.9844"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="28" x="50.5" y="267.3027">send</text><polygon fill="#A80036" points="54.5,298.2188,44.5,302.2188,54.5,306.2188,50.5,302.2188" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="48.5" x2="292" y1="302.2188" y2="302.2188"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="28" x="60.5" y="296.5371">recv</text><polygon fill="#A80036" points="176.5,352.4531,186.5,356.4531,176.5,360.4531,180.5,356.4531" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="120.5" x2="182.5" y1="356.4531" y2="356.4531"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="49" x="127.5" y="350.7715">connect</text><polygon fill="#A80036" points="329.5,381.6875,339.5,385.6875,329.5,389.6875,333.5,385.6875" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="198.5" x2="335.5" y1="385.6875" y2="385.6875"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="42" x="205.5" y="380.0059">accept</text><rect fill="#FEFECE" filter="url(#f1tq5xx29fq6sj)" height="30.4063" style="stroke:#A80036;stroke-width:1.5;" width="63" x="341.5" y="364.4531"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="49" x="348.5" y="383.8945">Socket2</text><polygon fill="#A80036" points="131.5,427.0938,121.5,431.0938,131.5,435.0938,127.5,431.0938" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="125.5" x2="369" y1="431.0938" y2="431.0938"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="28" x="137.5" y="425.4121">recv</text><polygon fill="#A80036" points="358,456.3281,368,460.3281,358,464.3281,362,460.3281" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="120.5" x2="364" y1="460.3281" y2="460.3281"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="28" x="127.5" y="454.6465">send</text><polygon fill="#A80036" points="363,510.5625,373,514.5625,363,518.5625,367,514.5625" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="115.5" x2="369" y1="514.5625" y2="514.5625"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="70" x="122.5" y="508.8809">disconnect</text><polygon fill="#A80036" points="49.5,564.7969,39.5,568.7969,49.5,572.7969,45.5,568.7969" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="43.5" x2="297" y1="568.7969" y2="568.7969"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="70" x="55.5" y="563.1152">disconnect</text><polygon fill="#A80036" points="181.5,616.4141,191.5,620.4141,181.5,624.4141,185.5,620.4141" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="169.5" x2="187.5" y1="620.4141" y2="620.4141"/><path d="M203,606.7969 L203,631.7969 L259,631.7969 L259,616.7969 L249,606.7969 L203,606.7969 " fill="#FBFB77" filter="url(#f1tq5xx29fq6sj)" style="stroke:#A80036;stroke-width:1.0;"/><path d="M249,606.7969 L249,616.7969 L259,616.7969 L249,606.7969 " fill="#FBFB77" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="35" x="209" y="623.3496">close</text><!--MD5=[bac12c22a2f7855a5187328122d805d0]
+@startuml
+
+participant "Client1" as C1
+participant "Client2" as C2
+box Server
+participant "Listen" as L
+
+C1 ->x L: connect
+note right: 受信側が待受けていないと失敗
+
+...
+
+?-> L
+note right: listen
+activate L
+
+C1 -> L: connect
+activate C1
+create participant "Socket1" as S1
+L -> S1: accept
+activate S1
+
+C1 -> S1: send
+S1 -> C1: recv
+
+|||
+
+C2 -> L: connect
+activate C2
+create participant "Socket2" as S2
+L -> S2: accept
+activate S2
+
+S2 -> C2: recv
+C2 -> S2: send
+
+|||
+
+C2 -> S2: disconnect
+deactivate C2
+deactivate S2
+
+||| 
+
+S1 -> C1: disconnect
+deactivate C1
+deactivate S1
+
+|||
+
+?-> L
+note right: close
+deactivate L
+
+end box
+
+@enduml
+
+PlantUML version 1.2020.26(Tue Dec 22 02:45:07 JST 2020)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: ja
+Country: JP
+--></g></svg></p>
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
