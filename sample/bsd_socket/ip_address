@@ -1,0 +1,20 @@
+#!/usr/bin/python3
+
+src = [192,168,1,1]
+mask = [255,255,255,0]
+dst = [192,168,2,2]
+
+src_net = []
+dst_net = []
+
+for s,d,m in zip(src,dst,mask):
+    src_net.append(s & m)
+    dst_net.append(d & m)
+    
+print(src_net)
+print(dst_net)
+
+if src_net == dst_net:
+    print('same network')
+else:
+    print('different network')
