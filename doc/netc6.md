@@ -234,6 +234,14 @@ IPv4 アドレスの枯渇問題を解消する為に導入された
 
 MACアドレス(レイヤー2)とIPアドレス(レイヤー3)の対応表の交換
 
+||| > | 送信元 | > | 送信先 |
+|---|---|---|---|---|---|
+| 種別 | OPER |MACアドレス|IPアドレス| MACアドレス|IPアドレス| 
+| ARPリクエスト | 1 | 自分 | 自分 | 00:00:00:00:00:00 | 問い合わせIPアドレス |
+| ARPリプライ | 2 | 自分 | 自分 | リクエスト元 | リクエスト元 |
+| ARPプローブ | 1 | 自分 | 0.0.0.0 | 00:00:00:00:00:00 | 自分のIPアドレス |
+| GARP | 1 | 自分 | 自分 | 00:00:00:00:00:00 | 自分のIPアドレス |
+
 ### Linux のIP関連コマンド
 
 昔からのnet-toolsは非推奨。 現在は iproute2
@@ -246,92 +254,3 @@ MACアドレス(レイヤー2)とIPアドレス(レイヤー3)の対応表の交
 
 - ルーティング機能とレイヤー2スイッチを統合したもの
 - どの機能に重点を置くかで、ルーターと呼ばれたりL3スイッチと呼ばれたり
-
-
-## レイヤー4(トランスポート層)
-
-### UDP
-
-```plantuml
-
-participant "送信" as S
-participant "受信" as R
-
-S ->x R
-note right: 受信側が待受けていないと破棄
-
-?-> R
-note right: 受信開始
-activate R
-S -> R
-S -> R
-
-...
-
-S -> R
-
-?-> R
-note right: 受信終了
-deactivate R
-
-S ->x R
-
-```
-
-### TCP
-
-```plantuml
-participant "Client1" as C1
-participant "Client2" as C2
-box Server
-participant "Listen" as L
-
-C1 ->x L: connect
-note right: 受信側が待受けていないと失敗
-
-...
-
-?-> L
-note right: listen
-activate L
-
-C1 -> L: connect
-activate C1
-create participant "Socket1" as S1
-L -> S1: accept
-activate S1
-
-C1 -> S1: send
-S1 -> C1: recv
-
-|||
-
-C2 -> L: connect
-activate C2
-create participant "Socket2" as S2
-L -> S2: accept
-activate S2
-
-S2 -> C2: recv
-C2 -> S2: send
-
-|||
-
-C2 -> S2: disconnect
-deactivate C2
-deactivate S2
-
-||| 
-
-S1 -> C1: disconnect
-deactivate C1
-deactivate S1
-
-|||
-
-?-> L
-note right: close
-deactivate L
-
-end box
-```
