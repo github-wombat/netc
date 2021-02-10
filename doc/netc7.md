@@ -1,5 +1,18 @@
 # NET-C 勉強会 7回目
 
+## BSD ソケット
+
+- IP アドレス
+  + IPv4
+  + IPv6
+- PORT
+  + well-known ports
+    0〜1023
+    HTTP(80) HTTPS(433) 等
+  + Registerd ports(登録済ポート)
+  + Ephemeral ports(短命ポート)
+    Linux では 32768〜60999 ( /proc/sys/net/ipv4/ip_local_port_range )
+
 ## レイヤー4(トランスポート層)
 
 ### UDP
@@ -86,7 +99,7 @@ C2 -> S2: disconnect
 deactivate C2
 deactivate S2
 
-||| 
+|||
 
 S1 -> C1: disconnect
 deactivate C1
